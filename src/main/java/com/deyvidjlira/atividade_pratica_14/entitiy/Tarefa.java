@@ -8,6 +8,8 @@ import javax.persistence.*;
 import java.time.Instant;
 import java.time.LocalDateTime;
 
+@Entity
+@Table(name = "tarefa")
 public class Tarefa {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,7 +33,7 @@ public class Tarefa {
     private Instant createdAt;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "status", referencedColumnName = "tarefas_status_id")
+    @JoinColumn(name = "status", referencedColumnName = "tarefa_status_id")
     private TarefaStatus status;
 
     @OneToOne(fetch = FetchType.LAZY)

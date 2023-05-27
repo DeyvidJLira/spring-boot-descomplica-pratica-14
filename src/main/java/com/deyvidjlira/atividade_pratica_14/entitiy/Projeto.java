@@ -13,7 +13,6 @@ import java.util.Set;
 
 @Entity
 @Table(name = "projeto")
-@EntityListeners(AuditingEntityListener.class)
 public class Projeto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
