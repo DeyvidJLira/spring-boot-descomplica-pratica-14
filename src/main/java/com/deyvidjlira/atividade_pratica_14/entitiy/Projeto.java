@@ -1,10 +1,8 @@
 package com.deyvidjlira.atividade_pratica_14.entitiy;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 import javax.persistence.*;
 import java.time.Instant;
@@ -13,6 +11,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "projeto")
+@EnableJpaAuditing
 public class Projeto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,15 +32,19 @@ public class Projeto {
 
     @CreatedDate
     @Column(name = "created_at", updatable = false)
-    private Instant createdAt;
+    private Instant createdAt = Instant.now();
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "status", referencedColumnName = "projeto_status_id")
     private ProjetoStatus status;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "recursos_projetos", joinColumns = @JoinColumn(name = "projeto_id"), inverseJoinColumns = @JoinColumn(name = "recurso_id"))
     private Set<Recurso> recursos;
+
+    @JsonManagedReference
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "projeto")
+    private Set<Tarefa> tarefas;
 
     public Integer getId() {
         return id;
@@ -105,5 +108,13 @@ public class Projeto {
 
     public void setRecursos(Set<Recurso> recursos) {
         this.recursos = recursos;
+    }
+
+    public Set<Tarefa> getTarefas() {
+        return tarefas;
+    }
+
+    public void setTarefas(Set<Tarefa> tarefas) {
+        this.tarefas = tarefas;
     }
 }

@@ -30,15 +30,20 @@ public class Tarefa {
 
     @CreatedDate
     @Column(name = "created_at", nullable = false, updatable = false)
-    private Instant createdAt;
+    private Instant createdAt = Instant.now();
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "status", referencedColumnName = "tarefa_status_id")
     private TarefaStatus status;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "recurso", referencedColumnName = "recurso_id")
     Recurso recurso;
+
+    @JsonBackReference
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "projeto", referencedColumnName = "projeto_id")
+    private Projeto projeto;
 
     public Integer getId() {
         return id;
@@ -103,5 +108,7 @@ public class Tarefa {
     public void setRecurso(Recurso recurso) {
         this.recurso = recurso;
     }
+
+
 
 }
