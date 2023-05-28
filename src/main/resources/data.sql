@@ -1,5 +1,3 @@
-INSERT INTO usuario (usuario_id, nome, email, password) VALUES (1, 'Deyvid', 'deyvid@ddd.com', '123456');
-
 INSERT INTO projeto_status (projeto_status_id, nome) VALUES (1, 'Nao Iniciado');
 INSERT INTO projeto_status (projeto_status_id, nome) VALUES (2, 'Em Andamento');
 INSERT INTO projeto_status (projeto_status_id, nome) VALUES (3, 'Concluido');
