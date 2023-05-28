@@ -1,7 +1,10 @@
 package com.deyvidjlira.atividade_pratica_14.controller;
 
+import com.deyvidjlira.atividade_pratica_14.entitiy.Recurso;
 import com.deyvidjlira.atividade_pratica_14.entitiy.Tarefa;
+import com.deyvidjlira.atividade_pratica_14.entitiy.TarefaStatus;
 import com.deyvidjlira.atividade_pratica_14.service.TarefaService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/tarefa")
+@Tag(name="6. Tarefa endpoints")
 public class TarefaController {
 
     @Autowired
@@ -54,6 +58,15 @@ public class TarefaController {
             return new ResponseEntity<>(true, HttpStatus.OK);
         else
             return new ResponseEntity<>(false, HttpStatus.OK);
+    }
+
+    @PostMapping("/search-by-status")
+    public ResponseEntity<Tarefa> getByStatus(@RequestBody TarefaStatus tarefaStatus) {
+        Tarefa item = service.getByStatus(tarefaStatus);
+        if(item != null)
+            return new ResponseEntity<>(item, HttpStatus.OK);
+        else
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
     }
 
 }

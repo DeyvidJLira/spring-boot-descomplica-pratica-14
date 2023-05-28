@@ -31,7 +31,7 @@ public class SecurityConfig{
                 .cors()
                 .and()
                 .authorizeHttpRequests()
-                .antMatchers("/auth/**", "/swagger-ui/**", "/v3/api-docs/**", "/actuator/**").permitAll()
+                .antMatchers("/auth/**", "/swagger-ui/**", "/v3/api-docs/**", "/actuator/**", "/projeto/**", "/usuario/**", "/tarefa/**", "/recurso/**", "/projeto-status/**", "/tarefa-status/**").permitAll() //Para fins de teste
                 .antMatchers("/user/**").hasRole("USER")
                 .anyRequest()
                 .authenticated()

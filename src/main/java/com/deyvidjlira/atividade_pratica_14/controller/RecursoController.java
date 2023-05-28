@@ -4,6 +4,7 @@ import com.deyvidjlira.atividade_pratica_14.entitiy.Projeto;
 import com.deyvidjlira.atividade_pratica_14.entitiy.Recurso;
 import com.deyvidjlira.atividade_pratica_14.service.ProjetoService;
 import com.deyvidjlira.atividade_pratica_14.service.RecursoService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/recurso")
+@Tag(name="5. Recurso endpoints")
 public class RecursoController {
 
     @Autowired
@@ -56,6 +58,15 @@ public class RecursoController {
             return new ResponseEntity<>(true, HttpStatus.OK);
         else
             return new ResponseEntity<>(false, HttpStatus.OK);
+    }
+
+    @GetMapping("/search-by-nome/{nome}")
+    public ResponseEntity<Recurso> getByNome(@PathVariable String nome) {
+        Recurso item = service.getByNome(nome);
+        if(item != null)
+            return new ResponseEntity<>(item, HttpStatus.OK);
+        else
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
     }
 
 }

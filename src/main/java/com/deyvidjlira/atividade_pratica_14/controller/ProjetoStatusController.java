@@ -2,6 +2,7 @@ package com.deyvidjlira.atividade_pratica_14.controller;
 
 import com.deyvidjlira.atividade_pratica_14.entitiy.ProjetoStatus;
 import com.deyvidjlira.atividade_pratica_14.service.ProjetoStatusService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/projeto-status")
+@Tag(name="4. Projeto Status endpoints")
 public class ProjetoStatusController {
     @Autowired
     ProjetoStatusService service;

@@ -1,6 +1,8 @@
 package com.deyvidjlira.atividade_pratica_14.service;
 
+import com.deyvidjlira.atividade_pratica_14.entitiy.Recurso;
 import com.deyvidjlira.atividade_pratica_14.entitiy.Tarefa;
+import com.deyvidjlira.atividade_pratica_14.entitiy.TarefaStatus;
 import com.deyvidjlira.atividade_pratica_14.repository.TarefaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -47,5 +49,9 @@ public class TarefaService {
         }else {
             return false;
         }
+    }
+
+    public Tarefa getByStatus(TarefaStatus tarefaStatus) {
+        return repository.findByStatus(tarefaStatus).orElse(null) ;
     }
 }

@@ -11,10 +11,10 @@ public class Recurso {
     @Column(name = "recurso_id")
     private Integer id;
 
-    @Column(name = "nome")
+    @Column(name = "nome", nullable = false)
     private String nome;
 
-    @Column(name = "funcao")
+    @Column(name = "funcao", nullable = false)
     private String funcao;
 
     public Integer getId() {

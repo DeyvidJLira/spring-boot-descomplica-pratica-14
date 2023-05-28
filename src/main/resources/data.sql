@@ -10,4 +10,6 @@ INSERT INTO projeto (projeto_id, nome, descricao, status, created_at) VALUES (1,
 
 INSERT INTO recurso (recurso_id, nome, funcao) VALUES (1, 'Um cara', 'Desenvolvedor');
 
-INSERT INTO tarefa (tarefa_id, nome, descricao, status, created_at, projeto) VALUES (1, 'Projeto 1', 'Descricao projeto 1', 1, '2023-05-27T19:30:56.881879Z', 1);
+INSERT INTO tarefa (tarefa_id, nome, descricao, status, created_at, projeto) VALUES (1, 'Tarefa 1', 'Descricao tarefa 1', 2, '2023-05-27T19:30:56.881879Z', 1);
+
+INSERT INTO recursos_projetos (projeto_id, recurso_id) VALUES (1, 1)

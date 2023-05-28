@@ -21,7 +21,7 @@ public class Projeto {
     @Column(name = "nome", nullable = false)
     private String nome;
 
-    @Column(name = "descricao")
+    @Column(name = "descricao", nullable = false)
     private String descricao;
 
     @Column(name = "data_inicio")

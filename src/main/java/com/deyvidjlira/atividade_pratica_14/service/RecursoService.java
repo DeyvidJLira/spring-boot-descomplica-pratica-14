@@ -1,5 +1,6 @@
 package com.deyvidjlira.atividade_pratica_14.service;
 
+import com.deyvidjlira.atividade_pratica_14.entitiy.Projeto;
 import com.deyvidjlira.atividade_pratica_14.entitiy.Recurso;
 import com.deyvidjlira.atividade_pratica_14.repository.RecursoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,5 +39,9 @@ public class RecursoService {
         }else {
             return false;
         }
+    }
+
+    public Recurso getByNome(String nome) {
+        return repository.findByNome(nome).orElse(null) ;
     }
 }

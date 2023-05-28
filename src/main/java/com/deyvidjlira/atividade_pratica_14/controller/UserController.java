@@ -2,6 +2,7 @@ package com.deyvidjlira.atividade_pratica_14.controller;
 
 import com.deyvidjlira.atividade_pratica_14.entitiy.Usuario;
 import com.deyvidjlira.atividade_pratica_14.service.UsuarioService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,6 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/usuario")
+@Tag(name="2. Usuario endpoints")
 public class UserController {
     @Autowired
     UsuarioService service;

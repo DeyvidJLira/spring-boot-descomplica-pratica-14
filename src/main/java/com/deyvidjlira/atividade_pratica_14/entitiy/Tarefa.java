@@ -16,7 +16,7 @@ public class Tarefa {
     @Column(name = "tarefa_id")
     private Integer id;
 
-    @Column(name = "nome")
+    @Column(name = "nome", nullable = false)
     private String nome;
 
     @Column(name = "descricao")
